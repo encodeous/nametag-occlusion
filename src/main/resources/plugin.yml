@@ -1,0 +1,6 @@
+name: Nametag-Occlusion
+version: '${project.version}'
+depend:
+  - ProtocolLib
+main: ca.encodeous.nametagocclusion.NametagOcclusion
+api-version: 1.19
