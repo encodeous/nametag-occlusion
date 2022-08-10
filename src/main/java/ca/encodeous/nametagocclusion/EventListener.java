@@ -39,12 +39,14 @@ public class EventListener implements Listener {
                 sf.setCollidable(false);
                 sf.setInvisible(true);
                 sf.setInvulnerable(true);
+                p.hideEntity(NametagOcclusion.instance, sf);
             });
             fish.put(p.getUniqueId(), entity2);
             var cbStand = (CraftArmorStand) stand;
             cbStand.getHandle().setShiftKeyDown(true);
             entity2.addPassenger(stand);
             p.addPassenger(entity2);
+            p.hideEntity(NametagOcclusion.instance, stand);
         });
         stands.put(p.getUniqueId(), entity);
     }
@@ -58,23 +60,5 @@ public class EventListener implements Listener {
         stands.remove(p.getUniqueId());
         fish.remove(p.getUniqueId());
         NametagOcclusion.invisibleTeam.removePlayer(p);
-    }
-
-    @EventHandler
-    public void PlayerMoveEvent(PlayerMoveEvent event){
-//        var p = event.getPlayer();
-//        var stand = stands.get(p.getUniqueId());
-//        short dx = getShortVal(event.getTo().getX() - event.getFrom().getX());
-//        short dy = getShortVal(event.getTo().getY() - event.getFrom().getY());
-//        short dz = getShortVal(event.getTo().getZ() - event.getFrom().getZ());
-//        for(var player : Bukkit.getOnlinePlayers()){
-//            var mPlayer = ((CraftPlayer)player).getHandle();
-//            var move = new ClientboundMoveEntityPacket.Pos(stand.getEntityId(), dx, dy, dz, false);
-//            mPlayer.connection.send(move);
-//        }
-    }
-
-    private static short getShortVal(double offset){
-        return (short) (offset * 4096);
     }
 }
